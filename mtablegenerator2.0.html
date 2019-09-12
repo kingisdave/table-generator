@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Multiplication Table Generator</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<script>
+
+		function generator()
+		{
+			var pp = "";
+			
+			var result = 0;
+			b = block.value;
+			l = line.value;
+			s = start.value;
+			
+			pp += "<table border=2 valign='top'><tr>";
+			for(i=s;i<=b;i++)
+			{
+				pp += "<td>";
+				pp += i + " Times";
+				pp += "<table border=1>";
+				for(v=0;v<=l;v++)
+				{ 
+				if (sel.value == "multiply") {
+					// result = i * v;
+					
+					pp += "<tr><td>" + i + " X " + v + " = " + i * v +"</td></tr>";}
+				}
+
+				for(v=0;v<=l;v++)
+				{ 
+				if (sel.value == "add") {
+					// result = i + v;
+					
+					pp += "<tr><td>" + i + " + " + v + " = " +  i + v +"</td></tr>";}
+				}
+
+				for(v=0;v<=l;v++)
+				{ 
+				if (sel.value == "minus") {
+					result = i - v;
+					
+					pp += "<tr><td>" + i + " - " + v + " = " + result +"</td></tr>";}
+				}
+
+				for(v=1;v<=l;v++)
+				{ 
+				if (sel.value == "divide") {
+					// result = i / v;
+					
+					pp += "<tr><td>" + i + " / " + v + " = " +  i / v +"</td></tr>";}
+				}
+
+				pp += "</table></td>";
+			}
+
+			pp += "</tr></table>";
+			place.innerHTML = pp;
+		}
+
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="card bg-primary text-white ">
+			<div class="card-header bg-dark text-center">
+				<h5>Table Generator</h5>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+				<table class="table table-borderless table-hover">
+					<tr><td>No of Blocks</td>
+						<td><input type="text" id="block" name=""></td>
+					</tr>
+					<tr><td>No of Lines</td>
+						<td><input type="text" id="line" name=""></td>
+					</tr>
+					<tr>
+						<td>StartPoint</td>
+						<td><input type="text" id="start" name=""></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<select id="sel">
+								<option value ="multiply">Multiplication</option>
+								<option value ="add">Addition</option>
+								<option value ="minus">Subtraction</option>
+								<option value ="divide">Division</option>
+							</select>
+						</td>
+					</tr>
+					<tr align="center">
+						<td align="center" colspan="2">
+							<div type="button" class="btn btn-dark" onclick="generator()">Generate</button>
+						</td>
+					</tr>
+				</table>
+				</div>
+				<div id="place"  style="background: darkgrey !important; color: #fff; width: 100%; overflow: auto"></div>
+			</div>
+		</div>
+		
+
+</fieldset>
+</div>
+</center>
+
+
+</body>
+</html>
